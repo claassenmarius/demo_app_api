@@ -6,11 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "aws/aws-sdk-php": "^3.245",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "spatie/laravel-data": "^2.0",
         "spatie/laravel-ray": "^1.31",
         "unicodeveloper/laravel-paystack": "^1.0"
     },
