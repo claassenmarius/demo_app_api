@@ -195,6 +195,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        \App\Providers\SkynetServiceProvider::class,
+        \App\Providers\TheCourierGuyServiceProvider::class,
+        \App\Providers\CourierServiceProvider::class,
 
     ],
 

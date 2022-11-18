@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ShipmentQuoteController;
+use App\Services\Couriers\DataObjects\Shipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function() {
-    ray(\request()->all());
-});
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('/shipments', function (Request $request) {
+    return \Illuminate\Support\Facades\Auth::user()->shipments;
+});
+
+Route::middleware('auth:sanctum')->post('/shipment_quote', ShipmentQuoteController::class);

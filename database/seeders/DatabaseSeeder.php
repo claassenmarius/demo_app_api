@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Shipment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,7 @@ class DatabaseSeeder extends Seeder
              'name' => 'Marius Claassen',
              'email' => 'marius.claassen@outlook.com',
          ]);
+
+         Shipment::factory(5000)->create();
     }
 }
