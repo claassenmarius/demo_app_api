@@ -15,6 +15,12 @@ class ShipmentQuoteController extends Controller
         $this->couriers = $couriers;
     }
 
+    /**
+     * @param Shipment $shipment
+     * @return ShipmentQuoteCollection
+     *
+     * Get Shipment Quotes for each courier
+     */
     public function __invoke (Shipment $shipment): ShipmentQuoteCollection
     {
         $quotes = new ShipmentQuoteCollection();
