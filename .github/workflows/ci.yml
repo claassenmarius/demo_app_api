@@ -49,3 +49,30 @@ jobs:
 #        DB_CONNECTION: sqlite
 #        DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit --coverage-text --colors=never
+
+  deploy-production:
+    name: Deploy Project to Production Server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fetch built assets from Artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: assets
+          path: public
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: '8.0'
+          extension-csv: mbstring, bcmath
+      - name: Composer install
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Setup Deployer
+        uses: atymic/deployer-php-action@master
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Deploy to Production
+        env:
+          DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
+        run: php vendor/bin/dep deploy prod --branch="main" -vv

@@ -17,6 +17,7 @@
         "unicodeveloper/laravel-paystack": "^1.0"
     },
     "require-dev": {
+        "deployer/deployer": "^7.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
@@ -50,7 +51,8 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "dep": "vendor/bin/dep init"
     },
     "extra": {
         "laravel": {
